@@ -13,7 +13,7 @@ import es.salesianos.model.Company;
 
 public class CompanyRepository implements Repository<Company> {
 
-	ConnectionH2 connection; 
+	ConnectionH2 connection = new ConnectionH2();
 	
 	private static final String JDBCURL = "jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
 
