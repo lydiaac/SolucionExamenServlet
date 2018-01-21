@@ -1,5 +1,7 @@
 package es.salesianos.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import es.salesianos.assembler.*;
@@ -19,6 +21,16 @@ public class CompanyService implements Service<Company> {
 	
 	public void insert(Company company) {
 		repository.insert(company);
+	}
+	
+	public void delete(String name) {
+		repository.delete(name);
+		
+	}
+	
+	@Override
+	public List<Company> listAll() {
+		return repository.listAll();
 	}
 
 }

@@ -1,19 +1,16 @@
 create table IF NOT EXISTS Company(
-	id int PRIMARY KEY,
-	name varchar(25),
+	name varchar(25) PRIMARY KEY,
 	creationDate date
 );
 
 create table IF NOT EXISTS Console(
-	id int PRIMARY KEY,
-	name varchar(25),
-	companyID int;
+	name varchar(25) PRIMARY KEY,
+	company varchar(25)
 );
 
 create table IF NOT EXISTS Videogame(
-	id int PRIMARY KEY,
-	name varchar(25),
+	name varchar(25) PRIMARY KEY,
 	recomendedAge varchar(2),
-	releaseDate date
-	consoleID int;
+	releaseDate date,
+	company varchar(25)
 );

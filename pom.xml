@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
   
   <groupId>es.salesianos.edu</groupId>
-  <artifactId>RecuperacionServlet</artifactId>
+  <artifactId>RecuServlet</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
   
-  <name>RecuperacionServlet</name>
+  <name>RecuServlet</name>
   
   <url>http://maven.apache.org</url>
   

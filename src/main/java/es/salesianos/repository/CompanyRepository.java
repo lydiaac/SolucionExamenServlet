@@ -13,7 +13,7 @@ import es.salesianos.model.Company;
 
 public class CompanyRepository implements Repository<Company> {
 
-	ConnectionH2 connection; 
+	ConnectionH2 connection = new ConnectionH2();
 	
 	private static final String JDBCURL = "jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
 
@@ -23,12 +23,10 @@ public class CompanyRepository implements Repository<Company> {
 		Connection conn = connection.openConnection(JDBCURL);
 		PreparedStatement preparedStatement = null;
 		try {
-			System.out.print("entro");
 			preparedStatement = conn.prepareStatement("INSERT INTO Company (name,creationDate)" + "VALUES (?, ?)");
 			preparedStatement.setString(1, company.getName());
 			preparedStatement.setDate(2, company.getCreationDate());
 			preparedStatement.executeUpdate();
-			System.out.print("insert exito");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -63,14 +61,14 @@ public class CompanyRepository implements Repository<Company> {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(String name) {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 
 		try {
 			conn = connection.openConnection(JDBCURL);
-			preparedStatement = conn.prepareStatement("DELETE FROM Company WHERE id = ?");
-			preparedStatement.setInt(1, id);
+			preparedStatement = conn.prepareStatement("DELETE FROM Company WHERE name = ?");
+			preparedStatement.setString(1, name);
 			preparedStatement.executeUpdate();
 
 		} catch (Exception e) {

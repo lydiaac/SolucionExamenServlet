@@ -14,7 +14,7 @@ public interface Repository<T> {
 	
 	void update(T t, Integer id);
 	
-	void delete(Integer id);
+	void delete(String name);
 	
 	List<T> listAll();
 }
