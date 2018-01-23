@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import es.salesianos.model.Company;
-
 public interface Service<T> {
 	
-	T assembleFromRequest(HttpServletRequest req);
+	public T assembleFromRequest(HttpServletRequest req);
+	
+	public void insert(T t);
+	
+	public void delete(int id);
 
-	List<T> listAll();
+	public List<T> listAll();
 }

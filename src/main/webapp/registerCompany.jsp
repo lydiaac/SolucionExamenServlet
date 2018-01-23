@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,12 +6,13 @@
 <title>Form Company</title>
 </head>
 <body>
+	<h2>FORM COMPANY</h2>
 	<form action="registerCompany" method="post">
 		<span>Name:</span> 
 		<input type="text" name="name"> <br/>
 		<span>Creation date:</span> 
 		<input type="date" name="creationDate"><br/>
-		<input type="submit">
+		<input type="submit" value="Submit">
 	</form>
 	</body>
 </body>

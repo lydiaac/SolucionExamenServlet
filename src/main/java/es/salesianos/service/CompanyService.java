@@ -19,13 +19,14 @@ public class CompanyService implements Service<Company> {
 		return company;
 	}
 	
+	@Override
 	public void insert(Company company) {
 		repository.insert(company);
 	}
 	
-	public void delete(String name) {
-		repository.delete(name);
-		
+	@Override
+	public void delete(int id) {
+		repository.delete(id);
 	}
 	
 	@Override

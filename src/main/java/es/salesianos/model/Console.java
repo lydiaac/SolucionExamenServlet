@@ -4,7 +4,7 @@ public class Console {
 	
 	private int id;
 	private String name;
-	private int companyID;
+	private int companyId;
 	
 	public int getId() {
 		return id;
@@ -18,12 +18,10 @@ public class Console {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getCompanyID() {
-		return companyID;
+	public int getCompanyId() {
+		return companyId;
 	}
-	public void setCompanyID(int companyID) {
-		this.companyID = companyID;
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
 	}
-	
-	
 }

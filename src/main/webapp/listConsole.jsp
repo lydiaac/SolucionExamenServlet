@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ page import="java.io.*,java.util.*,es.salesianos.model.*"%>
+<%@ page import="java.io.*,java.util.*,es.salesianos.model.Console"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -8,45 +8,45 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>List Companies</title>
+<title>List Consoles</title>
 </head>
 <body>
 
-	<h2>LIST COMPANIES</h2>
+	<h2>LIST CONSOLES</h2>
 
-	<form action="listCompany" method="post">
-		<input type="submit" value="See companies">
+	<form action="listConsole" method="post">
+		<input type="submit" value="See consoles">
 	</form>
 	<br/>
 	<%
-		List<Company> companies = (List<Company>) request.getAttribute("listAllCompanies");
-		pageContext.setAttribute("companies", companies);
+		List<Console> consoles = (List<Console>) request.getAttribute("listAllConsoles");
+		pageContext.setAttribute("consoles", consoles);
 	%>
 
 	<table border="1">
 		<thead>
 			<tr>
 				<td>ID</td>
-				<td>Company</td>
-				<td>Creation date</td>
+				<td>Name</td>
+				<td>CompanyId</td>
 			</tr>
 		</thead>
 		<tbody>
 			<%
-				if (null != companies && !companies.isEmpty()) {
-					for (Company com : companies) {
+				if (null != consoles && !consoles.isEmpty()) {
+					for (Console con : consoles) {
 						out.println("<tr>");
 						out.println("<td>");
-						out.println(com.getId());
+						out.println(con.getId());
 						out.println("</td>");
 						out.println("<td>");
-						out.println(com.getName());
+						out.println(con.getName());
 						out.println("</td>");
 						out.println("<td>");
-						out.println(com.getCreationDate());
+						out.println(con.getCompanyId());
 						out.println("</td>");
 						out.println("<td>");
-						out.println("<a href=" + '"' + "/deleteCompany?id=" + com.getId() + '"' + ">Delete</a>");
+						out.println("<a href=" + '"' + "/deleteConsole?id=" + con.getId() + '"' + ">Delete</a>");
 						out.println("</td>");
 						out.println("</tr>");
 					}

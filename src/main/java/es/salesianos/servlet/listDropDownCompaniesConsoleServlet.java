@@ -7,12 +7,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ListCompanyServlet extends CompanyServlet {
+public class listDropDownCompaniesConsoleServlet extends CompanyServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
 	protected void redirect(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/listCompany.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/listConsolesCompany.jsp");
 		dispatcher.forward(req,resp);
 	}
+
 }

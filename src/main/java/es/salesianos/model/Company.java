@@ -3,15 +3,15 @@ package es.salesianos.model;
 import java.sql.Date;
 
 public class Company {
-
+	
 	private int id;
 	private String name;
 	private Date creationDate;
 	
-	public int getID() {
+	public int getId() {
 		return id;
 	}
-	public void setID(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {

@@ -13,17 +13,18 @@ import es.salesianos.model.Company;
 
 public class CompanyRepository implements Repository<Company> {
 
-	ConnectionH2 connection = new ConnectionH2();
-	
-	private static final String JDBCURL = "jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
+	private static final String INSERT = "INSERT INTO Company (name,creationDate)" + "VALUES (?, ?)";
+	private static final String DELETE = "DELETE FROM Company WHERE id = ?";
+	private static final String SELECT = "SELECT * FROM Company";
 
-	
+	private ConnectionH2 connection = new ConnectionH2();
+
 	@Override
 	public void insert(Company company) {
 		Connection conn = connection.openConnection(JDBCURL);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn.prepareStatement("INSERT INTO Company (name,creationDate)" + "VALUES (?, ?)");
+			preparedStatement = conn.prepareStatement(INSERT);
 			preparedStatement.setString(1, company.getName());
 			preparedStatement.setDate(2, company.getCreationDate());
 			preparedStatement.executeUpdate();
@@ -32,52 +33,25 @@ public class CompanyRepository implements Repository<Company> {
 			throw new RuntimeException(e);
 		} finally {
 			connection.closePreparedStatement(preparedStatement);
-		}
-
-		connection.closeConnection(conn);
-	}
-
-	@Override
-	public void update(Company company, Integer id) {
-		Connection conn = null;
-		PreparedStatement preparedStatement = null;
-
-		try {
-			conn = connection.openConnection(JDBCURL);
-			preparedStatement = conn.prepareStatement("UPDATE company SET " + "name = ?, creationDate = ? WHERE id = ?");
-
-			preparedStatement.setString(1, company.getName());
-			preparedStatement.setDate(2, company.getCreationDate());
-			preparedStatement.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		} finally {
-			connection.closePreparedStatement(preparedStatement);
 			connection.closeConnection(conn);
 		}
-		
 	}
 
 	@Override
-	public void delete(String name) {
+	public void delete(int id) {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
-
 		try {
 			conn = connection.openConnection(JDBCURL);
-			preparedStatement = conn.prepareStatement("DELETE FROM Company WHERE name = ?");
-			preparedStatement.setString(1, name);
+			preparedStatement = conn.prepareStatement(DELETE);
+			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			connection.closePreparedStatement(preparedStatement);
 			connection.closeConnection(conn);
 		}
-		
 	}
 
 	@Override
@@ -89,13 +63,13 @@ public class CompanyRepository implements Repository<Company> {
 		try {
 			conn = connection.openConnection(JDBCURL);
 			statement = conn.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM Company");
-
-			while (resultSet.next()) {				
+			resultSet = statement.executeQuery(SELECT);
+			while (resultSet.next()) {
 				Company comp = new Company();
+				comp.setId(resultSet.getInt("id"));
 				comp.setName(resultSet.getString("name"));
 				comp.setCreationDate(resultSet.getDate("creationDate"));
-				companies.add(comp);				
+				companies.add(comp);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

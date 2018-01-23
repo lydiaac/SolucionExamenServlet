@@ -31,7 +31,6 @@ public class ConnectionH2 implements ConnectionManager {
 				e.printStackTrace();
 			}
 		}
-		
 	}
 
 	@Override

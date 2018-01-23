@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.salesianos.service.*;
+import es.salesianos.service.VideogameService;
 
-public class DeleteCompanyServlet extends HttpServlet {
+public class DeleteVideogameServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-
-	private CompanyService service = new CompanyService();
-
+	
+	private VideogameService service = new VideogameService();
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int id = Integer.parseInt(req.getParameter("id"));
@@ -31,20 +31,21 @@ public class DeleteCompanyServlet extends HttpServlet {
 	}
 
 	protected void confirmationRedirect(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/confirmationCompany.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/confirmationVideogame.jsp");
 		dispatcher.forward(req, resp);
 	}
 
 	protected void redirect(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/listCompany.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/listVideogame.jsp");
 		dispatcher.forward(req, resp);
 	}
 	
-	public CompanyService getService() {
+	public VideogameService getService() {
 		return service;
 	}
 
-	public void setService(CompanyService service) {
+	public void setService(VideogameService service) {
 		this.service = service;
 	}
+
 }

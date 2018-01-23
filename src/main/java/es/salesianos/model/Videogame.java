@@ -8,12 +8,12 @@ public class Videogame {
 	private String name;
 	private String recomendedAge;
 	private Date releaseDate;
-	private int companyID;
-	
-	public int getID() {
+	private int consoleId;
+
+	public int getId() {
 		return id;
 	}
-	public void setID(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -34,13 +34,10 @@ public class Videogame {
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
-	public int getConsoleID() {
-		return companyID;
+	public int getConsoleId() {
+		return consoleId;
 	}
-	public void setConsoleID(int consoleID) {
-		this.companyID = consoleID;
+	public void setConsoleId(int consoleId) {
+		this.consoleId = consoleId;
 	}
-	
-	
-
 }

@@ -4,5 +4,5 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface Assembler<T> {
 
-	T createFromRequest(HttpServletRequest request);
+	public T createFromRequest(HttpServletRequest request);
 }

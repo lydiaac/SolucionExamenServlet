@@ -3,13 +3,12 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-	<display-name>Archetype Created Web Application</display-name>
-
+	<display-name>WebApp</display-name>
 
 
 	<servlet>
-		<servlet-name>CompanyServlet</servlet-name>
-		<servlet-class>es.salesianos.servlet.CompanyServlet</servlet-class>
+		<servlet-name>RegisterCompanyServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.RegisterCompanyServlet</servlet-class>
 	</servlet>
 
 	<servlet>
@@ -21,10 +20,75 @@
 		<servlet-name>DeleteCompanyServlet</servlet-name>
 		<servlet-class>es.salesianos.servlet.DeleteCompanyServlet</servlet-class>
 	</servlet>
-
+	
+	<servlet>
+		<servlet-name>RegisterConsoleServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.RegisterConsoleServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ListCompanyDropDownServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListCompanyDropDownServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ListConsoleServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListConsoleServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>DeleteConsoleServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.DeleteConsoleServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>listDropDownCompaniesConsoleServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.listDropDownCompaniesConsoleServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ListConsolesCompanyServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListConsolesCompanyServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ListConsoleDropDownServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListConsoleDropDownServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>RegisterVideogameServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.RegisterVideogameServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ListVideogameServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListVideogameServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>DeleteVideogameServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.DeleteVideogameServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ListDropDownCompaniesVideogameServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListDropDownCompaniesVideogameServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ListVideogamesCompanyServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListVideogamesCompanyServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ListRecommendedAgeServlet</servlet-name>
+		<servlet-class>es.salesianos.servlet.ListRecommendedAgeServlet</servlet-class>
+	</servlet>
+	
 
 	<servlet-mapping>
-		<servlet-name>CompanyServlet</servlet-name>
+		<servlet-name>RegisterCompanyServlet</servlet-name>
 		<url-pattern>/registerCompany</url-pattern>
 	</servlet-mapping>
 
@@ -37,10 +101,73 @@
 		<servlet-name>DeleteCompanyServlet</servlet-name>
 		<url-pattern>/deleteCompany</url-pattern>
 	</servlet-mapping>
-
-
+	
+	<servlet-mapping>
+		<servlet-name>RegisterConsoleServlet</servlet-name>
+		<url-pattern>/registerConsole</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ListCompanyDropDownServlet</servlet-name>
+		<url-pattern>/listCompanyDropDown</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ListConsoleServlet</servlet-name>
+		<url-pattern>/listConsole</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>DeleteConsoleServlet</servlet-name>
+		<url-pattern>/deleteConsole</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>listDropDownCompaniesConsoleServlet</servlet-name>
+		<url-pattern>/listDropDownCompaniesConsole</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ListConsolesCompanyServlet</servlet-name>
+		<url-pattern>/listConsolesCompany</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ListConsoleDropDownServlet</servlet-name>
+		<url-pattern>/listConsoleDropDown</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>RegisterVideogameServlet</servlet-name>
+		<url-pattern>/registerVideogame</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ListVideogameServlet</servlet-name>
+		<url-pattern>/listVideogame</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>DeleteVideogameServlet</servlet-name>
+		<url-pattern>/deleteVideogame</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ListDropDownCompaniesVideogameServlet</servlet-name>
+		<url-pattern>/listDropDownCompaniesVideogame</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ListVideogamesCompanyServlet</servlet-name>
+		<url-pattern>/listVideogamesCompany</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ListRecommendedAgeServlet</servlet-name>
+		<url-pattern>/listRecommendedAge</url-pattern>
+	</servlet-mapping>
 
 	<welcome-file-list>
-		<welcome-file>registerCompany.jsp</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>
