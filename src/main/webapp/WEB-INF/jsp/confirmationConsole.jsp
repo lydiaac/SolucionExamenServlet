@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <%@ page import="java.io.*,java.util.*,es.salesianos.model.*"%>
 
@@ -13,15 +14,9 @@
 <body>
 
 	<h3>Are you sure?</h3>
-	<%
-		String id = (String) request.getAttribute("id");
-		pageContext.setAttribute("id", id);
-	%>
 
 	<form action="deleteConsole" method="post">
-		<%
-			out.println("<input type='text' name='id' value=" + id + ">");
-		%>
+		<input type='text' name='id' value="${id}">
 		<input type="submit" value="Yes">
 	</form>
 
