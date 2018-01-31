@@ -39,9 +39,9 @@ private static Logger log = LogManager.getLogger(CompanyService.class);
 		return repository.listAllByCompany(idCompany);
 	}
 	
-//	public List<Videogame> listAllByAge(String age, String order){
-//	return repository.listAllByAge(age, order);
-//}
+	public List<Videogame> listAllByAge(String age, String order){
+		return repository.listAllByAge(age, order);
+	}
 
 	public VideogameRepository getRepository() {
 		return repository;

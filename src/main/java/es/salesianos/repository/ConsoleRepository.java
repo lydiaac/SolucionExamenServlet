@@ -1,10 +1,18 @@
 package es.salesianos.repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import javax.swing.tree.RowMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -47,10 +55,16 @@ public class ConsoleRepository implements es.salesianos.repository.Repository<Co
 	}
 	
 	public List<Console> listAllByCompany(int idCompany){
-		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("id", idCompany);
-		List<Console> consoles = template.query(SELECTBYCOMPANY, new BeanPropertyRowMapper(Console.class));
-		return consoles;
+		List<Console> consoles = new ArrayList<Console>();
+		List<Map<String, Object>> rows = namedJdbcTemplate.queryForList(SELECTBYCOMPANY, new MapSqlParameterSource("id", String.valueOf(idCompany)));		
+			for(Map row : rows){
+				Console console = new Console();
+				console.setId(Integer.parseInt(String.valueOf(row.get("id"))));
+				console.setName((String)(row.get("name")));
+				console.setCompanyId(Integer.parseInt(String.valueOf(row.get("companyId"))));
+				consoles.add(console);
+			}
+		return consoles;	
 	}
 	
 	public JdbcTemplate getTemplate() {

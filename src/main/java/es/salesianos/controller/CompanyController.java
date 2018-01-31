@@ -23,20 +23,18 @@ public class CompanyController {
 	private CompanyService service;
 	
 	
-	//INSERT NEW COMPANY GET
 	@GetMapping("/registerCompany")
 	public ModelAndView company() {
 		return new ModelAndView("registerCompany", "command", new Company());
 	}
 	
-	//INSERT NEW COMPANY POST
 	@PostMapping("/registerCompany")
 	public ModelAndView saveCompany(@ModelAttribute Company company) {
 		service.insert(company);
 		return new ModelAndView("registerCompany", "command", new Console());
 	}
 	
-	//INSERT NEW CONSOLE GET - Dropdownlist
+	//Dropdownlist
 	@GetMapping("/registerConsole")
 	public ModelAndView console() {
 		ModelAndView modelAndView = new ModelAndView("registerConsole", "command", new Console());
@@ -44,7 +42,7 @@ public class CompanyController {
 		return modelAndView;
 	}
 	
-	//SELECT COMPANY GET - Dropdownlist
+	//Dropdownlist
 	@GetMapping("/listConsolesCompany")
 	public ModelAndView listConsolesCompany() {
 		ModelAndView modelAndView = new ModelAndView("listConsolesCompany", "command", new Console());
@@ -52,7 +50,14 @@ public class CompanyController {
 		return modelAndView;
 	}
 	
-	//LIST COMANIES
+	//Dropdownlist
+	@GetMapping("/listVideogamesCompany")
+	public ModelAndView listVideogamesCompany() {
+		ModelAndView modelAndView = new ModelAndView("listVideogamesCompany", "command", new Company());
+		modelAndView.addObject("listAllCompanies", service.listAll());
+		return modelAndView;
+	}
+	
 	@GetMapping("/listCompany")
 	public ModelAndView listCompany() {
 		ModelAndView modelAndView = new ModelAndView("listCompany", "command", new Company());
@@ -60,23 +65,18 @@ public class CompanyController {
 		return modelAndView;
 	}
 	
-	//DELETE COMPANY POST
-	@GetMapping("/deleteCompany")
-	public ModelAndView deleteCompany(@ModelAttribute String id) {
+	@GetMapping("/deleteCompany")	
+	public ModelAndView deleteCompany(@ModelAttribute("id") String id) {
 		ModelAndView model = new ModelAndView("confirmationCompany", "command", new Company());
 		model.addObject("id", id);
 		return model;
 	}
-	
-	
-	//DELETE COMPANY POST
+
 	@PostMapping("/deleteCompany")
-	public ModelAndView deleteCompanyConfirm(@ModelAttribute String id) {
+	public ModelAndView deleteCompanyConfirm(@ModelAttribute("id") String id) {
 		service.delete(Integer.parseInt(id));
 		ModelAndView modelAndView = new ModelAndView("listCompany", "command", new Company());
 		modelAndView.addObject("listAllCompanies", service.listAll());
 		return modelAndView;
-	}
-	
-	
+	}	
 }
