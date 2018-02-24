@@ -18,6 +18,8 @@ public class CompanyRepository implements es.salesianos.repository.Repository<Co
 	private static final String DELETE = "DELETE FROM Company WHERE id = :id";
 	private static final String SELECT = "SELECT * FROM Company";
 	
+	private static final String DELETETABLE = "DELETE FROM :tablename WHERE id = :id";
+	
 	@Autowired
 	private JdbcTemplate template;
 
@@ -37,6 +39,13 @@ public class CompanyRepository implements es.salesianos.repository.Repository<Co
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("id", id);
 		namedJdbcTemplate.update(DELETE, params);
+	}
+	
+	public void delete(String tablename, int id) {
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("tablename", tablename);
+		params.addValue("id", id);
+		namedJdbcTemplate.update(DELETETABLE, params);
 	}
 
 

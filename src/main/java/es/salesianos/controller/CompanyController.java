@@ -1,19 +1,32 @@
 package es.salesianos.controller;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import es.salesianos.service.*;
 import es.salesianos.model.*;
 
-@Controller
+@RestController
+@CrossOrigin(origins = "http://localhost:8080")
+@RequestMapping(value = "/api/v1/company")
 public class CompanyController {
 	
 	private static Logger log = LogManager.getLogger(CompanyController.class);
@@ -79,4 +92,33 @@ public class CompanyController {
 		modelAndView.addObject("listAllCompanies", service.listAll());
 		return modelAndView;
 	}	
+	
+	//SERVICIO REST
+	@PostMapping
+	@RequestMapping(value = "/list")
+	public ResponseEntity<List<Company>> ListAll() {
+		return new ResponseEntity<>(service.listAll(), HttpStatus.CREATED);
+	}
+	
+	@PostMapping
+	@RequestMapping(value = "/create")
+	public ResponseEntity<Company> create(@RequestBody Company company) {
+		service.insert(company);
+		return new ResponseEntity<>(company, HttpStatus.CREATED);
+	}
+
+	@PostMapping
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public ResponseEntity delete(@PathVariable( value = "id", required = true) Integer id) {
+		service.delete(id);
+		return new ResponseEntity(HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/delete/{tablename}/{id}", method = RequestMethod.GET)
+	public ResponseEntity delete(@PathVariable(value = "tablename") String tablename, @PathVariable( value = "id") Integer id) {
+		service.delete(tablename, id);
+		return new ResponseEntity(HttpStatus.OK);
+	}
+	
+	
 }

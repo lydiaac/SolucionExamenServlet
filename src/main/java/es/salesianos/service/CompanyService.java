@@ -29,6 +29,10 @@ public class CompanyService implements es.salesianos.service.Service<Company>{
 		repository.delete(id);
 	}
 	
+	public void delete(String tablename, int id) {
+		repository.delete(id);
+	}
+	
 	public List<Company> listAll() {
 		return repository.listAll();
 	}
